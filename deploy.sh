@@ -1,12 +1,25 @@
 #!/usr/bin/env sh
 
-success="更新成功"
+# abort on errors
 set -e
-yarn build
-cd ./dist
+
+# build
+npm run docs:build
+
+# navigate into the build output directory
+cd docs/.vuepress/dist
+
+# if you are deploying to a custom domain
+# echo 'www.example.com' > CNAME
+
 git init
 git add -A
 git commit -m 'deploy'
-https://github.com/etionsun/vblog master
-echo $success;
+
+# if you are deploying to https://<USERNAME>.github.io
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+
+# if you are deploying to https://<USERNAME>.github.io/<REPO>
+ git push -f git@github.com:etionsun/vblog.git master
+
 cd -
